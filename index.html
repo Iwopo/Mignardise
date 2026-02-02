@@ -3,183 +3,293 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Boulangerie Mignardise De La Source – Orléans</title>
-  <meta name="description" content="Boulangerie Mignardise De La Source à Orléans : pains artisanaux, viennoiseries, pâtisseries et gâteaux trompe-l'œil." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <title>Boulangerie Mignardise De La Source</title>
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <style>
     :root {
-      --bread-light: #e6c9a8;
-      --bread-dark: #b08968;
-      --brown: #4e342e;
-      --cream: #fff8f1;
+      --pain-clair: #e6c9a8;
+      --pain-moyen: #c89b6a;
+      --pain-fonce: #7a4a1d;
+      --fond-dark: #1a120b;
+      --glass: rgba(255,255,255,0.12);
+      --neon: #ffcc80;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
-      font-family: 'Poppins', sans-serif;
-      background-color: var(--cream);
-      color: var(--brown);
-      line-height: 1.6;
+      margin: 0;
+      font-family: 'Poppins', system-ui, sans-serif;
+      background: radial-gradient(circle at top, #2a1a0f, #0f0905);
+      color: #fff;
     }
 
     header {
-      background: linear-gradient(135deg, var(--bread-dark), var(--bread-light));
-      padding: 3rem 1.5rem;
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      color: white;
+      background: linear-gradient(135deg, rgba(122,74,29,0.9), rgba(30,18,9,0.9)), url('https://images.unsplash.com/photo-1509440159596-0249088772ff');
+      background-size: cover;
+      background-position: center;
     }
+
+    .logo-img {
+      width: 130px;
+      height: 130px;
+      object-fit: contain;
+      border-radius: 50%;
+      background: #000;
+      padding: 10px;
+      box-shadow: 0 0 30px rgba(255,200,120,0.7);
+      margin-bottom: 20px;
+    }
+
 
     header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      margin: 0 0 30px;
+      letter-spacing: 1px;
     }
 
-    section {
-      padding: 3rem 1.5rem;
-      max-width: 1100px;
-      margin: auto;
-    }
-
-    .intro {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .card {
-      background: white;
-      border-radius: 16px;
-      padding: 2rem;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-      transition: transform 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    .card-img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 12px;
-      margin-bottom: 1rem;
-    }
-
-    .infos {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-
-    .infos div {
-      background: white;
-      padding: 2rem;
-      border-radius: 16px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    header p {
+      margin: 15px 0 30px;
+      font-size: 1.2rem;
+      color: var(--neon);
     }
 
     .cta {
-      display: inline-block;
-      margin-top: 1rem;
-      background: var(--bread-dark);
-      color: white;
-      padding: 0.8rem 1.5rem;
-      border-radius: 999px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      padding: 14px 28px;
+      border-radius: 40px;
+      background: linear-gradient(135deg, var(--pain-moyen), var(--pain-clair));
+      color: #000;
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      box-shadow: 0 0 25px rgba(255,200,120,0.5);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .btn:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 0 40px rgba(255,200,120,0.9);
+    }
+
+    section {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    section h2 {
+      text-align: center;
+      font-size: 2.6rem;
+      margin-bottom: 50px;
+      color: var(--neon);
+      letter-spacing: 1px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 35px;
+    }
+
+    .card {
+      position: relative;
+      background: linear-gradient(180deg, rgba(255,255,255,0.15), rgba(255,255,255,0.03));
+      backdrop-filter: blur(10px);
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 0 35px rgba(0,0,0,0.6);
+      transition: transform 0.4s, box-shadow 0.4s;
+    }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 0 60px rgba(255,200,120,0.6);
+    }
+
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      filter: brightness(0.85);
+    }
+
+    .card h3 {
+      padding: 20px;
+      margin: 0;
+      font-size: 1.4rem;
+      text-align: center;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .info-box {
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      border-radius: 22px;
+      padding: 30px;
+      box-shadow: 0 0 40px rgba(0,0,0,0.5);
+    }
+
+    .info-box i {
+      font-size: 2rem;
+      color: var(--neon);
+      margin-bottom: 15px;
+    }
+
+    .info-box p {
+      margin: 10px 0 0;
+      line-height: 1.6;
+    }
+
+    .info-box a {
+      color: #ffffff;
       text-decoration: none;
     }
 
+    .info-box a:hover {
+      color: var(--neon);
+    }
+
     footer {
-      background: var(--brown);
-      color: white;
+      padding: 40px 20px;
       text-align: center;
-      padding: 1.5rem;
-      margin-top: 3rem;
+      background: #0b0704;
+      color: #aaa;
+    }
+
+    footer a {
+      color: var(--neon);
+      text-decoration: none;
+    }
+
+    .stars {
+      font-size: 1.8rem;
+      color: var(--neon);
+      margin-bottom: 15px;
+      animation: glow 1.8s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 5px var(--neon); }
+      to { text-shadow: 0 0 20px var(--neon); }
     }
   </style>
 </head>
-
 <body>
 
 <header>
+  <img src="logo.png" alt="Logo Boulangerie Mignardise De La Source" class="logo-img">
   <h1>Boulangerie Mignardise De La Source</h1>
-  <p>Pâtisserie artisanale • Viennoiserie • Sandwicherie</p>
+  
+  <div class="cta">
+    <a href="#produits" class="btn">Voir nos produits</a>
+    <a href="#" class="btn" onclick="window.open('https://g.page/r/CdALcRHWoeQUEBM/review','_blank');">Laisser un avis Google ⭐</a>
+  </div>
 </header>
 
-<section>
-  <div class="intro">
-    <h2>Le goût de l’artisanat à Orléans</h2>
-    <p>Pains, viennoiseries, pâtisseries et gâteaux trompe-l'œil faits maison.</p>
-  </div>
-
-  <div class="cards">
+<section id="produits">
+  <h2>Nos Spécialités</h2>
+  <div class="grid">
     <div class="card">
-      <img src="https://images.unsplash.com/photo-1608198093002-ad4e005484ec?q=80&w=1200&auto=format&fit=crop" class="card-img">
-      <h3>🥖 Pains artisanaux</h3>
-      <p>Pains traditionnels et spéciaux cuits chaque jour.</p>
+      <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a" alt="Viennoiseries">
+      <h3>Viennoiseries</h3>
     </div>
-
     <div class="card">
-      <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=1200&auto=format&fit=crop" class="card-img">
-      <h3>🥐 Viennoiseries</h3>
-      <p>Croissants, pains au chocolat et feuilletés pur beurre.</p>
+      <img src="https://images.unsplash.com/photo-1608198093002-ad4e005484ec" alt="Pains et baguettes">
+      <h3>Pains & Baguettes</h3>
     </div>
-
     <div class="card">
-      <img src="https://images.unsplash.com/photo-1614707267537-b85aaf00c4b7?q=80&w=1200&auto=format&fit=crop" class="card-img">
-      <h3>🍰 Pâtisseries & Trompe-l'œil</h3>
-      <p>Créations modernes et gâteaux trompe-l'œil uniques.</p>
-    </div>
-  </div>
-
-  <div class="infos">
-    <div>
-      <h3>📍 Adresse</h3>
-      <p>43 Rue de Condorcet<br>45100 Orléans</p>
-      <a class="cta" href="https://www.google.com/maps/search/?api=1&query=43+Rue+de+Condorcet+45100+Orléans" target="_blank">Google Maps</a>
-    </div>
-
-    <div>
-      <h3>⏰ Horaires</h3>
-      <p>Ouvert tous les jours<br>06:00 – 20:00</p>
-    </div>
-
-    <div>
-      <h3>📞 Contact</h3>
-      <p>+33 9 52 64 43 39</p>
-      <a class="cta" href="tel:+33952644339">Appeler</a>
+      <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587" alt="Pâtisseries">
+      <h3>Pâtisseries</h3>
     </div>
   </div>
 </section>
 
-<section>
-  <div class="intro">
-    <h2>📸 Nos créations</h2>
+<section id="infos">
+  <h2>Informations</h2>
+  <div class="info-grid">
+    <div class="info-box">
+      <i class="fas fa-location-dot"></i>
+      <p>43 Rue de Condorcet<br>45100 Orléans, France</p>
+    </div>
+    <div class="info-box">
+      <i class="fas fa-clock"></i>
+      <p>Ouvert tous les jours<br>06:00 – 20:00</p>
+    </div>
+    <div class="info-box">
+      <i class="fas fa-phone"></i>
+      <p>+33 9 52 64 43 39</p>
+    </div>
   </div>
-  <div class="cards">
-    <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=1200&auto=format&fit=crop" class="card-img">
-    <img src="https://images.unsplash.com/photo-1608198093002-ad4e005484ec?q=80&w=1200&auto=format&fit=crop" class="card-img">
-    <img src="https://images.unsplash.com/photo-1614707267537-b85aaf00c4b7?q=80&w=1200&auto=format&fit=crop" class="card-img">
+</section>
+
+<section id="contact">
+  <h2>Contact & Réseaux</h2>
+  <div class="info-grid">
+    <div class="info-box">
+      <i class="fas fa-envelope"></i>
+      <p>mignardisedelasource@gmail.com</p>
+    </div>
+    <div class="info-box">
+      <i class="fab fa-tiktok"></i>
+      <p><a href="https://www.tiktok.com/@mignardise.de.la" target="_blank">mignardise.de.la</a></p>
+    </div>
+    <div class="info-box">
+      <i class="fab fa-facebook"></i>
+      <p><a href="https://www.facebook.com/search/top?q=Boulangerie%20Mignardise%20De%20La%20Source" target="_blank">Boulangerie Mignardise De La Source</a></p>
+    </div>
+  </div>
+</section>
+
+<section id="avis">
+  <h2>Avis clients</h2>
+  <div class="grid">
+    <div class="card">
+      <div style="padding:25px;text-align:center">
+        <div class="stars">★★★★★</div>
+        <p>"Pain excellent, viennoiseries toujours fraîches. La meilleure boulangerie du quartier !"</p>
+        <strong>— Sophie L.</strong>
+      </div>
+    </div>
+    <div class="card">
+      <div style="padding:25px;text-align:center">
+        <div class="stars">★★★★★</div>
+        <p>"Accueil chaleureux, pâtisseries incroyables. Je recommande à 100%."</p>
+        <strong>— Karim D.</strong>
+      </div>
+    </div>
+    <div class="card">
+      <div style="padding:25px;text-align:center">
+        <div class="stars">★★★★★</div>
+        <p>"Qualité constante et produits faits maison. Un vrai plaisir chaque matin."</p>
+        <strong>— Claire M.</strong>
+      </div>
+    </div>
   </div>
 </section>
 
 <footer>
-  © 2026 – Boulangerie Mignardise De La Source
+  <p>© 2026 Boulangerie Mignardise De La Source</p>
 </footer>
 
 </body>
